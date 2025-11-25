@@ -102,7 +102,7 @@ test.describe("Signup tests", () => {
     })
 
 
-    test.only('wrong email format validation', async ({page}) => {
+    test('wrong email format validation', async ({page}) => {
         const signupButton = page.getByRole("button", {name: 'Sign up'})
         await signupButton.click()
 
