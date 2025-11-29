@@ -2,7 +2,6 @@ import {expect, test} from "@playwright/test";
 import GaragePage from "../../../src/pageObjects/garage/GaragePage.js";
 import MainPage from "../../../src/pageObjects/main/MainPage.js";
 
-
 test.describe("Create car as guest user POM", () => {
     let garagePage;
 
@@ -28,9 +27,7 @@ test.describe("Create car as guest user POM", () => {
 
 })
 
-
-
-test.describe.only("Create car as guest user POM 2", () => {
+test.describe("Create car as guest user POM 2", () => {
     let garagePage;
 
     test.beforeEach(async ({page}) => {
@@ -41,7 +38,7 @@ test.describe.only("Create car as guest user POM 2", () => {
         await mainPage.loginAsGuest()
     })
 
-    test('Create car', async () => {
+    test('Create car @my-label', async ({page}) => {
         const brand = 'Audi'
         const model = 'TT'
         const mileage = '222'
@@ -51,6 +48,8 @@ test.describe.only("Create car as guest user POM 2", () => {
         await addCarPopup.createCar({brand, model, mileage})
         // await garagePage.createCar({brand, model, mileage})
 
+        // works only in headed mode
+        // await page.pause()
         const carCard = await garagePage.getCarCard({brand, model})
         await carCard.assertBrand(brand)
         await carCard.assertModel(model)
