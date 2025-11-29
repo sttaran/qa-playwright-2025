@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test --project=smoke",
+    "test:regression": "npx playwright test --project=regression"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "@types/node": "^24.10.1"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.1.0"
+    "@faker-js/faker": "^10.1.0",
+    "dotenv": "^17.2.3"
   }
 }

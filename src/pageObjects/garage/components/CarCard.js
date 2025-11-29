@@ -11,7 +11,7 @@ export default class CarCard extends BaseComponent {
     }
 
     async assertBrand(expected){
-        await expect(carCard.container, "Car should have valid brand").toContainText(brand)
+        await expect(this.container, "Car should have valid brand").toContainText(expected)
     }
 
     async assertModel(expected){
