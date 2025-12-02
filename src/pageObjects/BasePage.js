@@ -1,3 +1,4 @@
+import {expect} from "@playwright/test";
 
 export default class BasePage {
     constructor(page, url) {

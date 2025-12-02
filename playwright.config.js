@@ -29,7 +29,13 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+      ['html', { open: 'on-failure' } ],
+      ["playwright-testrail-reporter"]
+      // ['./reporter/MyReporter.js'],
+      // ['json', {outputFile: 'results.json'}],
+      // ['junit', { outputFile: 'results.xml' }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
