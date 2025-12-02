@@ -1,4 +1,5 @@
 import BaseComponent from "../../BaseComponent.js";
+import {expect, test} from "@playwright/test";
 
 
 export default class AddCarPopup extends BaseComponent {
@@ -12,9 +13,11 @@ export default class AddCarPopup extends BaseComponent {
     }
 
     async fillForm({brand, model, mileage}) {
-        await this.brandSelect.selectOption(brand)
-        await this.modelSelect.selectOption(model)
-        await this.mileageInput.fill(mileage)
+        await test.step(`Create a new car (Brand ${brand} model ${model})`, async () => {
+            await this.brandSelect.selectOption(brand)
+            await this.modelSelect.selectOption(model)
+            await this.mileageInput.fill(mileage)
+        })
     }
 
     async createCar({brand, model, mileage}) {
