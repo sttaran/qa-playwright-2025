@@ -33,10 +33,10 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: config.baseURL,
+    baseURL: config.baseURLStage,
     httpCredentials: config.httpCredentials,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    headless: true,
+    headless: false,
     viewport: { width: 1280, height: 720 },
     trace: 'on',
     video: "on",
@@ -64,21 +64,6 @@ export default defineConfig({
               },
           },
       },
-      // {
-      //     name: 'smoke:stage',
-      //     dependencies: ['setup'],
-      //     grep: /@my-label/,
-      //     use: {
-      //         ...devices['Desktop Chrome'],
-      //           viewport: { width: 1920, height: 1080 },
-      //         trace: 'on',
-      //         screenshot: {
-      //             fullPage: true,
-      //             mode: "on"
-      //         },
-      //         baseURL: config.baseURLStage,
-      //     },
-      // },
       {
           name: 'regression',
           dependencies: ['setup'],
