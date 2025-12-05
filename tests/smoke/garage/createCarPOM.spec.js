@@ -28,7 +28,7 @@ test.describe("Create car as guest user POM", () => {
 
 })
 
-test.describe.only("Create car as guest user POM 2 @my-label", () => {
+test.describe("Create car as guest user POM 2 @my-label", () => {
     let garagePage;
 
     test.beforeEach(async ({page}) => {
