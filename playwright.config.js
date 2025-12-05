@@ -31,7 +31,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
       ['html', { open: 'on-failure' } ],
-      ["playwright-testrail-reporter"]
+      // ["playwright-testrail-reporter"]
       // ['./reporter/MyReporter.js'],
       // ['json', {outputFile: 'results.json'}],
       // ['junit', { outputFile: 'results.xml' }],
