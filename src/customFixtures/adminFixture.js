@@ -1,5 +1,7 @@
 import { baseCustomFixture as base } from "./baseCustomFixture.js";
+import {request as pwRequest} from "@playwright/test";
 import GaragePage from "../pageObjects/garage/GaragePage.js";
+import ApiClient from "../clients/ApiClient.js";
 
 // withNewUser
 export const adminFixture = base.extend({
@@ -9,6 +11,18 @@ export const adminFixture = base.extend({
         })
         const page = await ctx.newPage()
         await use (page)
+    },
+    request: async ({}, use)=> {
+        const ctx = await pwRequest.newContext({
+            storageState: 'state/adminStorageState.json'
+        })
+
+        await use(ctx)
+    },
+    apiClient: async ({request}, use)=> {
+        // Assuming ApiClient is defined elsewhere
+        const apiClient = new ApiClient(request)
+        await use(apiClient)
     },
     garagePage: async ({page}, use)=> {
         const garagePage = new GaragePage(page)

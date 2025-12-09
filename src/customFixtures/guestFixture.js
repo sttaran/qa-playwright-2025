@@ -1,4 +1,5 @@
-import { baseCustomFixture as base } from "./baseCustomFixture.js";
+import { baseCustomFixture as base} from "./baseCustomFixture.js";
+import { expect as baseExpect} from "@playwright/test";
 import GaragePage from "../pageObjects/garage/GaragePage.js";
 
 // withGuestAccount
@@ -8,3 +9,5 @@ export const guestTest = base.extend({
         await use (new GaragePage(page))
     },
 })
+
+export const expect = baseExpect

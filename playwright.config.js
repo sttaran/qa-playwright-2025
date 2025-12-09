@@ -58,7 +58,7 @@ export default defineConfig({
       },
       {
           name: 'smoke',
-          dependencies: ['setup'],
+          // dependencies: ['setup'],
           grep: /@my-label/,
           use: {
               ...devices['Desktop Chrome'],
