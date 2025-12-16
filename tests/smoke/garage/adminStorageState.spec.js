@@ -2,7 +2,7 @@ import {adminFixture} from "../../../src/customFixtures/adminFixture.js";
 import {expect} from "../../../src/customFixtures/guestFixture.js";
 import CreateCarDTOFactory from "../../../src/domain/cars/factory/CreateCarDTOFactory.js";
 
-adminFixture.describe.only("use storage state @my-label", () => {
+adminFixture.describe("use storage state @my-label", () => {
     adminFixture('Create car with UI', async ({page, garagePage}) => {
         await adminFixture.step("Verify created car details", async () => {
             await page.pause()
