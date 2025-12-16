@@ -1,9 +1,10 @@
 name: "Automated tests with Playwright"
 
 on:
-  - pull_request
-  - push
-  - workflow_dispatch
+  workflow_dispatch:
+  pull_request_target:
+      types: [ assigned, opened, synchronize, reopened ]
+
 
 jobs:
   playwright-tests:
