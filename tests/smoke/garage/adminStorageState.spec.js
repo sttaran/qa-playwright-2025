@@ -1,8 +1,8 @@
-import {adminFixture} from "../../../src/customFixtures/adminFixture.js";
+import {adminFixture} from "../../../src/customFixtures/adminFixture.ts";
 import {expect} from "../../../src/customFixtures/guestFixture.js";
 import CreateCarDTOFactory from "../../../src/domain/cars/factory/CreateCarDTOFactory.js";
 
-adminFixture.describe.only("use storage state @my-label", () => {
+adminFixture.describe("use storage state @my-label", () => {
     adminFixture('Create car with UI', async ({page, garagePage}) => {
         await adminFixture.step("Verify created car details", async () => {
             await page.pause()
@@ -52,5 +52,11 @@ adminFixture.describe.only("use storage state @my-label", () => {
         const response = await apiClient.cars.createCar(body.extract())
 
         await expect(response).toBeOK()
+    })
+
+    adminFixture('Create car with API Audi 2', async ({oracleDBClient}) => {
+        const userRow = await oracleDBClient.usersTable.getUser(1)
+
+        expect(userRow.NAME).toBe("Admin")
     })
 })

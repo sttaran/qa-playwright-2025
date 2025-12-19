@@ -30,7 +30,8 @@ export default defineConfig({
   workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-      ['html', { open: 'on-failure' } ],
+      ['html', { open: 'never' } ],
+      [process.env.CI ? 'list': 'dot']
       // ["playwright-testrail-reporter"]
       // ['./reporter/MyReporter.js'],
       // ['json', {outputFile: 'results.json'}],
@@ -58,7 +59,7 @@ export default defineConfig({
       },
       {
           name: 'smoke',
-          // dependencies: ['setup'],
+          dependencies: ['setup'],
           grep: /@my-label/,
           use: {
               ...devices['Desktop Chrome'],
