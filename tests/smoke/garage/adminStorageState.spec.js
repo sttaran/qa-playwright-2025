@@ -53,4 +53,10 @@ adminFixture.describe("use storage state @my-label", () => {
 
         await expect(response).toBeOK()
     })
+
+    adminFixture('Create car with API Audi 2', async ({oracleDBClient}) => {
+        const userRow = await oracleDBClient.usersTable.getUser(1)
+
+        expect(userRow.NAME).toBe("Admin")
+    })
 })

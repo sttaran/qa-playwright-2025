@@ -1,7 +1,9 @@
 import { baseCustomFixture as base } from "./baseCustomFixture.js";
 import {request as pwRequest} from "@playwright/test";
 import GaragePage from "../pageObjects/garage/GaragePage.js";
-import ApiClient from "../clients/ApiClient.js";
+import ApiClient from "../clients/api/ApiClient.js";
+import OracleDBClient from "../clients/db/oracle/OracleDBClient.js";
+import oracledb from "oracledb";
 
 // withNewUser
 export const adminFixture = base.extend({
@@ -18,6 +20,21 @@ export const adminFixture = base.extend({
         })
 
         await use(ctx)
+    },
+    oracleDBClient: async ({}, use)=> {
+        // create conenction
+
+        const connection = await oracledb.getConnection ({
+            user          : "hr", // from .env or config
+            password      : mypw, // from .env or config
+            connectString : "localhost/FREEPDB1" // from .env or config
+        });
+        // pass to test
+        const oracleDBClient = new OracleDBClient(connection)
+        await use(oracleDBClient)
+        // close connection
+        await connection.close();
+
     },
     apiClient: async ({request}, use)=> {
         // Assuming ApiClient is defined elsewhere
