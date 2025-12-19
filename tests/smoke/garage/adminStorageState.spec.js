@@ -1,4 +1,4 @@
-import {adminFixture} from "../../../src/customFixtures/adminFixture.js";
+import {adminFixture} from "../../../src/customFixtures/adminFixture.ts";
 import {expect} from "../../../src/customFixtures/guestFixture.js";
 import CreateCarDTOFactory from "../../../src/domain/cars/factory/CreateCarDTOFactory.js";
 

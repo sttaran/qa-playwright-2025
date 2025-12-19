@@ -5,8 +5,14 @@ import ApiClient from "../clients/api/ApiClient.js";
 import OracleDBClient from "../clients/db/oracle/OracleDBClient.js";
 import oracledb from "oracledb";
 
+type AdminFixture = {
+    oracleDBClient: OracleDBClient
+    apiClient: ApiClient
+    garagePage: GaragePage
+}
+
 // withNewUser
-export const adminFixture = base.extend({
+export const adminFixture = base.extend<AdminFixture>({
     page: async ({browser}, use)=> {
         const ctx = await browser.newContext({
             storageState: 'state/adminStorageState.json'
@@ -26,7 +32,7 @@ export const adminFixture = base.extend({
 
         const connection = await oracledb.getConnection ({
             user          : "hr", // from .env or config
-            password      : mypw, // from .env or config
+            password      : "mypw", // from .env or config
             connectString : "localhost/FREEPDB1" // from .env or config
         });
         // pass to test
